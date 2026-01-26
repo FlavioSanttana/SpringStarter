@@ -31,3 +31,8 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Banco de dados e logs
+#./db/blogbd.mv.db
+#./db/blogbd
+
