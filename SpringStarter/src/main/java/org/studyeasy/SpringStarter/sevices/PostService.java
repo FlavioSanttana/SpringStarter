@@ -20,7 +20,7 @@ public class PostService {
         return postRepository.findById(id);
     }
     
-    public List<Post> getAll(Long id){
+    public List<Post> getAll(){
         return postRepository.findAll();
     }
 
@@ -29,7 +29,7 @@ public class PostService {
     }
 
     public Post save(Post post){
-        if(post.getId()==null){
+        if(post.getId() == null){
             post.setCreatedAt(LocalDateTime.now());;
         }
         return postRepository.save(post);
