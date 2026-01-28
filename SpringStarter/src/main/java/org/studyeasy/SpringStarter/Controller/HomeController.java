@@ -21,12 +21,10 @@ public class HomeController {
     @GetMapping("/")    
     public String home (Model model){
         
-        //List<Post> posts = postservice.getAll();
         List<Post> posts = postservice.getAll();
         
         model.addAttribute("posts", posts);        
-        //String attributeName;
-        //model.addAttribute("posts", posts);
+        
         return "Home";
     }
     
