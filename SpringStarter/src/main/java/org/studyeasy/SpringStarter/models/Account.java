@@ -1,21 +1,22 @@
 package org.studyeasy.SpringStarter.models;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
- /*Marca a classe Java como uma entidade JPA, o que significa que ela 
- será mapeada para uma tabela de banco de dados. */
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person {
+public class Account {
     
     /*Define o campo que será a Chave Primária (Primary Key) da tabela. */
     @Id
@@ -23,13 +24,16 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int id;
     
+    @Column(name = "email", nullable = false, length = 100)
+    private String email;
+
+    @Column(name = "password", nullable = false, length = 20)
+    private String password;
+
     @Column(name = "firstName", nullable = false, length = 100)
     private String firstName;
-    
-    @Column(name = "lastName", nullable = false, length = 100)
-    private String lastName; 
-    
-    @Column(name = "email", nullable = false, length = 100)
-    private String email; 
 
+    @OneToMany(mappedBy = "account")
+    private List<Post> posts;
+    
 }

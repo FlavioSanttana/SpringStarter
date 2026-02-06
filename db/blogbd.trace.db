@@ -72,3 +72,9 @@ POST POST POST [42001-232]
 2026-01-26 20:25:16.004367-03:00 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]POST"; expected "PREPARE"; SQL statement:
 POST [42001-232]
+2026-02-06 09:36:55.687106-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]PERSON"; expected "PREPARE"; SQL statement:
+PERSON [42001-232]
+2026-02-06 09:37:01.123877-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "[*]PERSON"; expected "PREPARE"; SQL statement:
+PERSON [42001-232]
