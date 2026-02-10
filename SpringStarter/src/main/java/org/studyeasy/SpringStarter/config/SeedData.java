@@ -5,8 +5,10 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+import org.studyeasy.SpringStarter.models.Account;
 import org.studyeasy.SpringStarter.models.Person;
 import org.studyeasy.SpringStarter.models.Post;
+import org.studyeasy.SpringStarter.sevices.AccountService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
 
@@ -19,8 +21,23 @@ public class SeedData implements CommandLineRunner {
     @Autowired
     private PersonService personService;
 
+    @Autowired
+    private AccountService accountService;
+
     @Override
     public void run(String ... args) throws Exception{
+
+        Account account01 = new Account();
+        account01.setFirstName("Flávio UFSC");
+        account01.setEmail("flavio.santana@ufsc.br");
+        account01.setPassword("123456");
+        accountService.save(account01);
+
+        Account account02 = new Account();
+        account02.setFirstName("Flávio Santana");
+        account02.setEmail("f.o.santana@gmail.com");
+        account02.setPassword("123456");
+        accountService.save(account02);
 
         List<Post> posts = postService.getAll();
 
@@ -29,11 +46,13 @@ public class SeedData implements CommandLineRunner {
             Post post01 = new Post();
             post01.setTitle("Post 01");
             post01.setBody("Post 01.........................................");
+            post01.setAccount(account01);
             postService.save(post01);
 
             Post post02 = new Post();
             post02.setTitle("Post 02");
             post02.setBody("Post 02.........................................");
+            post02.setAccount(account02);
             postService.save(post02);
 
         }

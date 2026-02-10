@@ -33,4 +33,5 @@ public class Post {
     @ManyToOne
     @JoinColumn(name="account_id", referencedColumnName = "id", nullable = false)
     private Account account;
+
 }

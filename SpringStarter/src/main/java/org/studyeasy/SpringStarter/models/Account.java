@@ -22,7 +22,7 @@ public class Account {
     @Id
     /*Define a estratégia de geração da chave primária (ex: GenerationType.IDENTITY para auto-incremento).  */
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int id;
+    private Long id;
     
     @Column(name = "email", nullable = false, length = 100)
     private String email;
