@@ -34,4 +34,11 @@ public class AccountController {
 
     }
 
+    @GetMapping("/login")
+    public String register_user(Model model){
+        
+        return "login";
+
+    }
+
 }
