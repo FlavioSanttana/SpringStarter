@@ -35,8 +35,7 @@ public class AccountController {
     }
 
     @GetMapping("/login")
-    public String register_user(Model model){
-        
+    public String login(Model model){
         return "login";
 
     }
