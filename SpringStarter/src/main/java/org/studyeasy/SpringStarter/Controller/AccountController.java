@@ -19,10 +19,8 @@ public class AccountController {
     @GetMapping("/register")
     public String register(Model model){
 
-
         Account acccount = new Account();
         model.addAttribute("account", acccount);
-
         return "register"; 
 
     }
