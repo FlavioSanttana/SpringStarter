@@ -1,6 +1,7 @@
 package org.studyeasy.SpringStarter.sevices;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.studyeasy.SpringStarter.models.Account;
 import org.studyeasy.SpringStarter.repositories.AccountRepository;
@@ -11,22 +12,11 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    /* 
-    public Optional<Account> getById(Long id){
-        return accountRepository.findById(id);
-    }
-    
-    public List<Account> getAll(){
-        return accountRepository.findAll();
-    }
-
-    public void delete (Account account){
-        accountRepository.delete(account);
-    }
-    */
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public Account save(Account account){
-       
+        account.setPassword(passwordEncoder.encode(account.getPassword()));
         return accountRepository.save(account);
     }
 

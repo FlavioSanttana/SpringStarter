@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -24,30 +26,12 @@ public class WebSecurityConfig{
         
     };
 
-/*
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            // Authorize requests
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(WHITELIST).permitAll() // Public endpoints
-                .anyRequest().authenticated()           // All others require authentication
-            )
-            // Enable form login
-            .formLogin(form -> form
-                .loginPage("/login")       // Custom login page
-                .permitAll()
-            )
-            // Enable logout
-            .logout(logout -> logout
-                .permitAll()
-            )
-            // CSRF protection enabled by default
-            .csrf(csrf -> csrf.disable()); // Disable only if needed (e.g., for APIs)
 
-        return http.build();
+    @Bean
+    public static PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
     }
-*/
+
 
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
@@ -57,8 +41,25 @@ public class WebSecurityConfig{
             .permitAll() // Public endpoints
             .anyRequest()
             .authenticated()
+            // Enable form login
+              
         ) // All others require authentication
+        .formLogin((form) -> form
+            .loginPage("/login") // Custom login page
+            .loginProcessingUrl("/login")
+            .usernameParameter("email")
+            .passwordParameter("password")
+            .defaultSuccessUrl("/",true)
+            .failureUrl("/login?error")
+            .permitAll()
+        )
+        // Enable logout
+        .logout(logout -> logout
+            .logoutSuccessUrl("/logout?sucess")
+            .permitAll()
+        )
         
+
         // CSRF protection enabled by default
         .csrf(csrf -> csrf.disable());
         
@@ -67,7 +68,8 @@ public class WebSecurityConfig{
             .frameOptions(frameOptions -> frameOptions
                 .sameOrigin()
             )
-        );
+        )
+        .httpBasic(); // Enables HTTP Basic with default settings
 
         return http.build();
     }
