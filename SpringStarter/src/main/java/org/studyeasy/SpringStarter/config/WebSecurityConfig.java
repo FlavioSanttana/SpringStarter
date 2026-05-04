@@ -31,33 +31,6 @@ public class WebSecurityConfig{
         return new BCryptPasswordEncoder();
     }
 
-/*
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            // Authorize requests
-            .authorizeHttpRequests(auth -> auth
-                .requestMatchers(WHITELIST).permitAll() // Public endpoints
-                .anyRequest().authenticated()           // All others require authentication
-            )
-            // Enable form login
-            .formLogin(form -> form
-                .loginPage("/login")       // Custom login page
-                .permitAll()
-            )
-            // Enable logout
-            .logout(logout -> logout
-                .permitAll()
-            )
-            // CSRF protection enabled by default
-            .csrf(csrf -> csrf.disable()); // Disable only if needed (e.g., for APIs)
-
-        return http.build();
-    }
-*/
-
-    
-
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
         http
@@ -67,10 +40,12 @@ public class WebSecurityConfig{
             .anyRequest()
             .authenticated()
         ) 
+    
         // All others require authentication
+    
         // Enable form login
-        .formLogin(form -> form
-            .loginPage("/login")   // Custom login page
+        .formLogin((form) -> form
+            .loginPage("/login") // Custom login page
             .loginProcessingUrl("/login")
             .usernameParameter("email")
             .passwordParameter("password")
@@ -78,14 +53,14 @@ public class WebSecurityConfig{
             .failureUrl("/login?error")
             .permitAll()
         )
+    
         // Enable logout
         .logout(logout -> logout
             .logoutUrl("/logout")
             .logoutSuccessUrl("/logout?success")
             .permitAll()
         )
-        
-        //.formLogin(null))
+    
         // CSRF protection enabled by default
         .csrf(csrf -> csrf.disable());
         
@@ -95,6 +70,7 @@ public class WebSecurityConfig{
                 .sameOrigin()
             )
         );
+        
 
         return http.build();
     }

@@ -7,10 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.studyeasy.SpringStarter.models.Person;
 import org.studyeasy.SpringStarter.models.Post;
 import org.studyeasy.SpringStarter.sevices.PersonService;
-//import org.springframework.web.bind.annotation.RequestParam;
 import org.studyeasy.SpringStarter.sevices.PostService;
 
 
