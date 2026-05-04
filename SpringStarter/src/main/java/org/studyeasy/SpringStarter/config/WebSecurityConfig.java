@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @EnableWebSecurity
@@ -23,6 +25,11 @@ public class WebSecurityConfig{
         "/js/**"
         
     };
+
+    @Bean
+    public static PasswordEncoder passwordEncoder(){
+        return new BCryptPasswordEncoder();
+    }
 
 /*
     @Bean
@@ -49,6 +56,8 @@ public class WebSecurityConfig{
     }
 */
 
+    
+
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
         http
@@ -57,8 +66,26 @@ public class WebSecurityConfig{
             .permitAll() // Public endpoints
             .anyRequest()
             .authenticated()
-        ) // All others require authentication
+        ) 
+        // All others require authentication
+        // Enable form login
+        .formLogin(form -> form
+            .loginPage("/login")   // Custom login page
+            .loginProcessingUrl("/login")
+            .usernameParameter("email")
+            .passwordParameter("password")
+            .defaultSuccessUrl("/",true)
+            .failureUrl("/login?error")
+            .permitAll()
+        )
+        // Enable logout
+        .logout(logout -> logout
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/logout?success")
+            .permitAll()
+        )
         
+        //.formLogin(null))
         // CSRF protection enabled by default
         .csrf(csrf -> csrf.disable());
         
