@@ -117,3 +117,18 @@ insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
 2026-04-08 23:47:57.501668-03:00 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$ufyIcR/lLuSd8yMHtgiNIO94AuiXmOCutElwIUPtwTcowa1vniyV.' (60)"; SQL statement:
 insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
+2026-04-08 23:51:41.421372-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$HEQ3/bkbPqoc0KDXujUyYeAya8Iy307TkAHqhjGc8trZ5yhOX8VIm' (60)"; SQL statement:
+insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
+2026-04-08 23:55:51.302548-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$P2yYATTtqqPaBdZVUFek.e5QMLVX3S5jm5ydBvtovEDkpgYWdSgbu' (60)"; SQL statement:
+insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
+2026-05-04 22:25:36.217941-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$kwch3PCl1idaEE4WOfzkjOkdnsjwfJNDvb38eGHCaHRloFu/Apf76' (60)"; SQL statement:
+insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
+2026-05-04 22:26:14.254343-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$Py6za7/pMhyBXzsHrjcLCeLymy2yfNTPS7onWSr9H2F1s53QH98cS' (60)"; SQL statement:
+insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
+2026-05-04 22:27:52.461832-03:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLDataException: Value too long for column "PASSWORD CHARACTER VARYING(20)": "'$2a$10$QYrfGl2qooaXT9wNOrVYwu5.qDtRCPNE5RNLruhlTgeqGZKSdpplq' (60)"; SQL statement:
+insert into account (email,first_name,password,id) values (?,?,?,?) [22001-232]
