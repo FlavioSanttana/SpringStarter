@@ -28,13 +28,15 @@ public class SeedData implements CommandLineRunner {
     public void run(String ... args) throws Exception{
 
         Account account01 = new Account();
-        account01.setFirstName("Flávio UFSC");
+        account01.setFirstName("Flávio");
+        account01.setLastName("Santana");
         account01.setEmail("teste@ufsc.br");
         account01.setPassword("123456");
         accountService.save(account01);
 
         Account account02 = new Account();
-        account02.setFirstName("Flávio Santana");
+        account02.setFirstName("Flávio");
+        account02.setLastName("Oliveira");
         account02.setEmail("admin@ufsc.br");
         account02.setPassword("123456");
         accountService.save(account02);

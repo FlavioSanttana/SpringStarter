@@ -33,6 +33,11 @@ public class Account {
     @Column(name = "firstName", nullable = false, length = 100)
     private String firstName;
 
+    @Column(name = "lastName", nullable = false, length = 100)
+    private String lastName;
+
+    private String role; 
+
     @OneToMany(mappedBy = "account")
     private List<Post> posts;
     
