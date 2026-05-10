@@ -26,12 +26,10 @@ public class WebSecurityConfig{
         
     };
 
-
     @Bean
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
-
 
     @Bean
     public SecurityFilterChain filterChain (HttpSecurity http) throws Exception{
@@ -41,9 +39,11 @@ public class WebSecurityConfig{
             .permitAll() // Public endpoints
             .anyRequest()
             .authenticated()
-            // Enable form login
-              
-        ) // All others require authentication
+        ) 
+    
+        // All others require authentication
+    
+        // Enable form login
         .formLogin((form) -> form
             .loginPage("/login") // Custom login page
             .loginProcessingUrl("/login")
@@ -53,13 +53,14 @@ public class WebSecurityConfig{
             .failureUrl("/login?error")
             .permitAll()
         )
+    
         // Enable logout
         .logout(logout -> logout
-            .logoutSuccessUrl("/logout?sucess")
+            .logoutUrl("/logout")
+            .logoutSuccessUrl("/logout?success")
             .permitAll()
         )
-        
-
+    
         // CSRF protection enabled by default
         .csrf(csrf -> csrf.disable());
         
@@ -68,8 +69,8 @@ public class WebSecurityConfig{
             .frameOptions(frameOptions -> frameOptions
                 .sameOrigin()
             )
-        )
-        .httpBasic(); // Enables HTTP Basic with default settings
+        );
+        
 
         return http.build();
     }
