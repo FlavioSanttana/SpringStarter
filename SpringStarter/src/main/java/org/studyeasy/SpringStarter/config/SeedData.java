@@ -6,11 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 import org.studyeasy.SpringStarter.models.Account;
+import org.studyeasy.SpringStarter.models.Authority;
 import org.studyeasy.SpringStarter.models.Person;
 import org.studyeasy.SpringStarter.models.Post;
 import org.studyeasy.SpringStarter.sevices.AccountService;
+import org.studyeasy.SpringStarter.sevices.AutorityService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
+import org.studyeasy.SpringStarter.util.constants.Authorities;
 
 @Component
 public class SeedData implements CommandLineRunner {
@@ -24,8 +27,19 @@ public class SeedData implements CommandLineRunner {
     @Autowired
     private AccountService accountService;
 
+    @Autowired
+    private AutorityService autorityService;  
+
     @Override
     public void run(String ... args) throws Exception{
+
+        for (Authorities auth: Authorities.values()){
+            Authority authority = new  Authority();
+            authority.setId(auth.getId());
+            authority.setName(auth.getPrivillage);
+            autorityService.save(authority);
+        }
+
 
         Account account01 = new Account();
         account01.setFirstName("Flávio");
