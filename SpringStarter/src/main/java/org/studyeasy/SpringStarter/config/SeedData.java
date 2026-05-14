@@ -14,6 +14,7 @@ import org.studyeasy.SpringStarter.sevices.AutorityService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
 import org.studyeasy.SpringStarter.util.constants.Authorities;
+import org.studyeasy.SpringStarter.util.constants.Roles;
 
 @Component
 public class SeedData implements CommandLineRunner {
@@ -42,18 +43,28 @@ public class SeedData implements CommandLineRunner {
 
 
         Account account01 = new Account();
-        account01.setFirstName("Flávio");
-        account01.setLastName("Santana");
-        account01.setEmail("teste@ufsc.br");
+        account01.setFirstName("Admin");
+        account01.setLastName("Teste");
+        account01.setEmail("admin@teste.br");
         account01.setPassword("123456");
+        account01.setRole(Roles.ADMIN.getRole());
         accountService.save(account01);
 
         Account account02 = new Account();
-        account02.setFirstName("Flávio");
-        account02.setLastName("Oliveira");
-        account02.setEmail("admin@ufsc.br");
+        account02.setFirstName("Editor01");
+        account02.setLastName("Teste");
+        account02.setEmail("editor01@teste.br");
         account02.setPassword("123456");
+        account02.setRole(Roles.EDITOR.getRole());
         accountService.save(account02);
+
+        Account account03 = new Account();
+        account03.setFirstName("Editor02");
+        account03.setLastName("Teste");
+        account03.setEmail("editor02@teste.br");
+        account03.setPassword("123456");
+        account03.setRole(Roles.EDITOR.getRole());
+        accountService.save(account03);
 
         List<Post> posts = postService.getAll();
 
