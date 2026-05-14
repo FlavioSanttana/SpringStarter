@@ -28,8 +28,13 @@ public class AccountService implements UserDetailsService {
     private PasswordEncoder passwordEncoder;
 
     public Account save(Account account){
+        
         account.setPassword(passwordEncoder.encode(account.getPassword()));
-        account.setRole(Roles.USER.getRole());
+        
+        if(account.getRole()==null){
+            account.setRole(Roles.USER.getRole());
+        }
+               
         return accountRepository.save(account);
     }
 

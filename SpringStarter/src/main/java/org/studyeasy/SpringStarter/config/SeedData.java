@@ -1,6 +1,8 @@
 package org.studyeasy.SpringStarter.config;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -14,6 +16,7 @@ import org.studyeasy.SpringStarter.sevices.AutorityService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
 import org.studyeasy.SpringStarter.util.constants.Authorities;
+import org.studyeasy.SpringStarter.util.constants.Privillages;
 import org.studyeasy.SpringStarter.util.constants.Roles;
 
 @Component
@@ -43,28 +46,45 @@ public class SeedData implements CommandLineRunner {
 
 
         Account account01 = new Account();
-        account01.setFirstName("Admin");
-        account01.setLastName("Teste");
-        account01.setEmail("admin@teste.br");
+        account01.setFirstName("Flávio");
+        account01.setLastName("Santana");
+        account01.setEmail("flavio@santana.br");
         account01.setPassword("123456");
-        account01.setRole(Roles.ADMIN.getRole());
-        accountService.save(account01);
+        //account01.setRole(Roles.USER.getRole());
+        
 
         Account account02 = new Account();
-        account02.setFirstName("Editor01");
+        account02.setFirstName("Admin");
         account02.setLastName("Teste");
-        account02.setEmail("editor01@teste.br");
+        account02.setEmail("admin@teste.br");
         account02.setPassword("123456");
-        account02.setRole(Roles.EDITOR.getRole());
-        accountService.save(account02);
+        account02.setRole(Roles.ADMIN.getRole());
+        
 
         Account account03 = new Account();
-        account03.setFirstName("Editor02");
+        account03.setFirstName("Editir01");
         account03.setLastName("Teste");
-        account03.setEmail("editor02@teste.br");
+        account03.setEmail("editor01@teste.br");
         account03.setPassword("123456");
         account03.setRole(Roles.EDITOR.getRole());
+       
+
+        Account account04 = new Account();
+        account04.setFirstName("Editir02");
+        account04.setLastName("Teste");
+        account04.setEmail("editor02@teste.br");
+        account04.setPassword("123456");
+        account04.setRole(Roles.EDITOR.getRole());
+        Set<Authority> authorities = new HashSet<>();
+        autorityService.findById(Privillages.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorities::add);
+        autorityService.findById(Privillages.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorities::add);
+        account04.setAuthorities(authorities);
+
+        accountService.save(account01);
+        accountService.save(account02);
         accountService.save(account03);
+        accountService.save(account04);
+
 
         List<Post> posts = postService.getAll();
 

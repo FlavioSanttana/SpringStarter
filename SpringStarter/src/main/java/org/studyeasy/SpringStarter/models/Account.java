@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -46,10 +47,10 @@ public class Account {
     private List<Post> posts;
 
     @ManyToMany
-    @JoingTable(
+    @JoinTable(
         name = "account_authority", 
         joinColumns = {@JoinColumn(name="account_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
-    private Set<Authority>authorities = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
     
 }
