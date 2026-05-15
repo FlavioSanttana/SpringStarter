@@ -2,8 +2,8 @@ package org.studyeasy.SpringStarter.util.constants;
 
 public enum Privillages {
     
-    RESET_ANY_USER_PASSWORD(1l, "RESET_ANY_USER_PASSWORD");
-    ACCESS_ADMIN_PANEL(2l, "ACCESS_ADMIM_PANEL");
+    RESET_ANY_USER_PASSWORD(1l, "RESET_ANY_USER_PASSWORD"),
+    ACCESS_ADMIN_PANEL(2l, "ACCESS_ADMIN_PANEL");
     
     private Long id;
     private String privillage;
@@ -14,7 +14,7 @@ public enum Privillages {
 
     }
 
-    public Long getAuthorityId(){
+    public Long getId(){
         return id;
     }
 

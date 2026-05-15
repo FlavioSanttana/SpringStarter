@@ -15,7 +15,6 @@ import org.studyeasy.SpringStarter.sevices.AccountService;
 import org.studyeasy.SpringStarter.sevices.AutorityService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
-import org.studyeasy.SpringStarter.util.constants.Authorities;
 import org.studyeasy.SpringStarter.util.constants.Privillages;
 import org.studyeasy.SpringStarter.util.constants.Roles;
 
@@ -37,13 +36,12 @@ public class SeedData implements CommandLineRunner {
     @Override
     public void run(String ... args) throws Exception{
 
-        for (Authorities auth: Authorities.values()){
+        for (Privillages auth: Privillages.values()){
             Authority authority = new  Authority();
             authority.setId(auth.getId());
-            authority.setName(auth.getPrivillage);
+            authority.setName(auth.getPrivillage());
             autorityService.save(authority);
         }
-
 
         Account account01 = new Account();
         account01.setFirstName("Flávio");
@@ -52,7 +50,6 @@ public class SeedData implements CommandLineRunner {
         account01.setPassword("123456");
         //account01.setRole(Roles.USER.getRole());
         
-
         Account account02 = new Account();
         account02.setFirstName("Admin");
         account02.setLastName("Teste");
@@ -60,7 +57,6 @@ public class SeedData implements CommandLineRunner {
         account02.setPassword("123456");
         account02.setRole(Roles.ADMIN.getRole());
         
-
         Account account03 = new Account();
         account03.setFirstName("Editir01");
         account03.setLastName("Teste");
@@ -68,7 +64,6 @@ public class SeedData implements CommandLineRunner {
         account03.setPassword("123456");
         account03.setRole(Roles.EDITOR.getRole());
        
-
         Account account04 = new Account();
         account04.setFirstName("Editir02");
         account04.setLastName("Teste");
