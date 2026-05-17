@@ -15,7 +15,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.studyeasy.SpringStarter.models.Account;
+import org.studyeasy.SpringStarter.models.Authority;
 import org.studyeasy.SpringStarter.repositories.AccountRepository;
+import org.studyeasy.SpringStarter.util.constants.Authorities;
 import org.studyeasy.SpringStarter.util.constants.Roles;
 
 @Service
@@ -49,10 +51,14 @@ public class AccountService implements UserDetailsService {
 
         Account account = optionlAccount.get();
 
-
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
         grantedAuthority.add(new SimpleGrantedAuthority(account.getRole()));
-        
+
+        for(Authority _auth:account.getAuthorities()){
+             grantedAuthority.add(new SimpleGrantedAuthority(_auth.getName()));
+
+        }
+
         return new User(account.getEmail(), account.getPassword(), grantedAuthority); 
     }
 
