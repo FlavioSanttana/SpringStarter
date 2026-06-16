@@ -8,6 +8,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.studyeasy.SpringStarter.util.constants.Privillages;
+import org.studyeasy.SpringStarter.util.constants.Roles;
 
 @EnableWebSecurity
 @EnableMethodSecurity(prePostEnabled = true, securedEnabled = true)
@@ -37,6 +39,10 @@ public class WebSecurityConfig{
         .authorizeHttpRequests(auth -> auth
             .requestMatchers(WHITELIST)
             .permitAll() // Public endpoints
+            .requestMatchers("/profile/**").authenticated()
+            .requestMatchers("/admin/**").hasRole("ADMIN")
+            .requestMatchers("/editor/**").hasAnyRole("ADMIN", "EDITOR")
+            .requestMatchers("/admin/**").hasAuthority(Privillages.ACCESS_ADMIN_PANEL.getPrivillage())
             .anyRequest()
             .authenticated()
         ) 

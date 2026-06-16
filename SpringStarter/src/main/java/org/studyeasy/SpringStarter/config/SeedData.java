@@ -30,7 +30,7 @@ public class SeedData implements CommandLineRunner {
     @Autowired
     private AccountService accountService;
 
-    @Autowired
+    @Autowired ()
     private AutorityService autorityService;  
 
     @Override

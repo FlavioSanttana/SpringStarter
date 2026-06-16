@@ -30,7 +30,13 @@ public class HomeController {
         //List<Person> persons = personService.getAll();
         //model.addAttribute("persons", persons);
 
-        return "Home";
+        return "home";
+    }    
+
+    @GetMapping("/editor")    
+    public String editor(Model model){
+        
+        return "editor";
     }    
     
 }

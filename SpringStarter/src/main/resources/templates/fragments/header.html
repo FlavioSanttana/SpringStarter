@@ -23,27 +23,33 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                     </li>
                     
                     <span sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/register">Register</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/register">Register</a>
+                        </li>
                     </span>
                     
                     <span sec:authorize="!isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/login">login</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">login</a>
+                        </li>
                     </span>
                     
                     <span sec:authorize="isAuthenticated()">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile">Profile</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
                     </span>
 
                     <span sec:authorize="hasRole('ROLE_ADMIN')">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">admin</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">admin</a>
+                        </li>
+                    </span>
+
+                    <span sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/editor">editor</a>
+                        </li>
                     </span>
 
                 </ul>
