@@ -28,11 +28,7 @@ public class HomeController {
                
         List<Post> posts = postService.getAll();   
         model.addAttribute("posts", posts);        
-        
-        //List<Person> persons = personService.getAll();
-        //model.addAttribute("persons", persons);
-
-        return "Home";
+        return "home";
     }    
     
 }

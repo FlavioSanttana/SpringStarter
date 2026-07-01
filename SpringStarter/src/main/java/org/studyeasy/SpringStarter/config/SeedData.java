@@ -38,6 +38,7 @@ public class SeedData implements CommandLineRunner {
         account02.setEmail("f.o.santana@gmail.com");
         account02.setPassword("123456");
         accountService.save(account02);
+        
 
         List<Post> posts = postService.getAll();
 
@@ -45,13 +46,13 @@ public class SeedData implements CommandLineRunner {
             
             Post post01 = new Post();
             post01.setTitle("Post 01");
-            post01.setBody("Post 01.........................................");
+            post01.setBody("Body post 01.........................................");
             post01.setAccount(account01);
             postService.save(post01);
 
             Post post02 = new Post();
             post02.setTitle("Post 02");
-            post02.setBody("Post 02.........................................");
+            post02.setBody("Body post 02.........................................");
             post02.setAccount(account02);
             postService.save(post02);
 

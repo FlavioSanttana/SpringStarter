@@ -11,20 +11,6 @@ public class AccountService {
     @Autowired
     private AccountRepository accountRepository;
 
-    /* 
-    public Optional<Account> getById(Long id){
-        return accountRepository.findById(id);
-    }
-    
-    public List<Account> getAll(){
-        return accountRepository.findAll();
-    }
-
-    public void delete (Account account){
-        accountRepository.delete(account);
-    }
-    */
-
     public Account save(Account account){
        
         return accountRepository.save(account);
