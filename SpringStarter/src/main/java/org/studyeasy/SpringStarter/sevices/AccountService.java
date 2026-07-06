@@ -33,16 +33,13 @@ public class AccountService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        
-        Optional<Account> optionlAccount = accountRepository.findOneByEmailIgnoreCase(email);
-
-        if(!optionlAccount.isPresent()){
+        Optional<Account> optionalAccount = accountRepository.findOneByEmailIgnoreCase(email);
+        if(!optionalAccount.isPresent()){
             throw new UsernameNotFoundException("Account not found!");
         }
 
-        Account account = optionlAccount.get();
-
-
+        Account account = optionalAccount.get();
+        
         List<GrantedAuthority> grantedAuthority = new ArrayList<>();
         grantedAuthority.add(new SimpleGrantedAuthority("Allow"));
         
