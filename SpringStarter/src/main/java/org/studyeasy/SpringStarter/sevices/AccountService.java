@@ -20,7 +20,6 @@ import org.studyeasy.SpringStarter.util.constants.Roles;
 
 @Service
 public class AccountService implements UserDetailsService {
-    
     @Autowired
     private AccountRepository accountRepository;
 
