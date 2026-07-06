@@ -68,6 +68,7 @@ public class WebSecurityConfig{
         .headers(headers -> headers
             .frameOptions(frameOptions -> frameOptions
                 .sameOrigin()
+                .disable()
             )
         );
         
