@@ -14,6 +14,7 @@ import org.studyeasy.SpringStarter.sevices.AutorityService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
 import org.studyeasy.SpringStarter.util.constants.Authorities;
+import org.studyeasy.SpringStarter.util.constants.Privillages;
 import org.studyeasy.SpringStarter.util.constants.Roles;
 
 @Component
@@ -34,13 +35,12 @@ public class SeedData implements CommandLineRunner {
     @Override
     public void run(String ... args) throws Exception{
 
-        for (Authorities auth: Authorities.values()){
+        for (Privillages auth: Privillages.values()){
             Authority authority = new  Authority();
             authority.setId(auth.getId());
-            authority.setName(auth.getPrivillage);
+            authority.setName(auth.getPrivillage());
             autorityService.save(authority);
         }
-
 
         Account account01 = new Account();
         account01.setFirstName("Admin");

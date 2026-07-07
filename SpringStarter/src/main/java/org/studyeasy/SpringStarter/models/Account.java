@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import lombok.Getter;
@@ -24,20 +25,19 @@ public class Account {
     
     /*Define o campo que será a Chave Primária (Primary Key) da tabela. */
     @Id
-    /*Define a estratégia de geração da chave primária (ex: GenerationType.IDENTITY para auto-incremento).  */
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE) /*Define a estratégia de geração da chave primária (ex: GenerationType.IDENTITY para auto-incremento).*/
     private Long id;
     
-    @Column(name = "email", nullable = false, length = 100)
+    //@Column(name = "email", nullable = false, length = 100)
     private String email;
 
-    @Column(name = "password", nullable = false, length = 100)
+    //@Column(name = "password", nullable = false, length = 100)
     private String password;
 
-    @Column(name = "firstName", nullable = false, length = 100)
+    //@Column(name = "firstName", nullable = false, length = 100)
     private String firstName;
 
-    @Column(name = "lastName", nullable = false, length = 100)
+    //@Column(name = "lastName", nullable = false, length = 100)
     private String lastName;
 
     private String role; 
@@ -46,10 +46,10 @@ public class Account {
     private List<Post> posts;
 
     @ManyToMany
-    @JoingTable(
+    @JoinTable(
         name = "account_authority", 
         joinColumns = {@JoinColumn(name="account_id", referencedColumnName = "id")},
         inverseJoinColumns = {@JoinColumn(name = "authority_id", referencedColumnName = "id")})
-    private Set<Authority>authorities = new HashSet<>();
+    private Set<Authority> authorities = new HashSet<>();
     
 }
