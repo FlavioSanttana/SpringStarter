@@ -23,10 +23,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Account {
     
-    /*Define o campo que será a Chave Primária (Primary Key) da tabela. */
-    @Id
-    /*Define a estratégia de geração da chave primária (ex: GenerationType.IDENTITY para auto-incremento).  */
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    
+    @Id/*Define o campo que será a Chave Primária (Primary Key) da tabela. */
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)/*Define a estratégia de geração da chave primária (ex: GenerationType.IDENTITY para auto-incremento).  */
     private Long id;
     
     @Column(name = "email", nullable = false, length = 100)

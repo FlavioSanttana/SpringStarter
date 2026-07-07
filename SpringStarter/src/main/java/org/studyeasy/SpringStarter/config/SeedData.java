@@ -12,7 +12,7 @@ import org.studyeasy.SpringStarter.models.Authority;
 import org.studyeasy.SpringStarter.models.Person;
 import org.studyeasy.SpringStarter.models.Post;
 import org.studyeasy.SpringStarter.sevices.AccountService;
-import org.studyeasy.SpringStarter.sevices.AutorityService;
+import org.studyeasy.SpringStarter.sevices.AuthorityService;
 import org.studyeasy.SpringStarter.sevices.PersonService;
 import org.studyeasy.SpringStarter.sevices.PostService;
 import org.studyeasy.SpringStarter.util.constants.Privillages;
@@ -21,17 +21,17 @@ import org.studyeasy.SpringStarter.util.constants.Roles;
 @Component
 public class SeedData implements CommandLineRunner {
 
-    @Autowired
+    @Autowired (required=true)
     private PostService postService; 
 
-    @Autowired
+    @Autowired (required=true)
     private PersonService personService;
 
-    @Autowired
+    @Autowired (required=true)
     private AccountService accountService;
 
-    @Autowired ()
-    private AutorityService autorityService;  
+    @Autowired (required=true)
+    private AuthorityService authorityService;  
 
     @Override
     public void run(String ... args) throws Exception{
@@ -40,7 +40,7 @@ public class SeedData implements CommandLineRunner {
             Authority authority = new  Authority();
             authority.setId(auth.getId());
             authority.setName(auth.getPrivillage());
-            autorityService.save(authority);
+            authorityService.save(authority);
         }
 
         Account account01 = new Account();
@@ -48,7 +48,7 @@ public class SeedData implements CommandLineRunner {
         account01.setLastName("Santana");
         account01.setEmail("flavio@santana.br");
         account01.setPassword("123456");
-        //account01.setRole(Roles.USER.getRole());
+        account01.setRole(Roles.USER.getRole());
         
         Account account02 = new Account();
         account02.setFirstName("Admin");
@@ -71,8 +71,8 @@ public class SeedData implements CommandLineRunner {
         account04.setPassword("123456");
         account04.setRole(Roles.EDITOR.getRole());
         Set<Authority> authorities = new HashSet<>();
-        autorityService.findById(Privillages.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorities::add);
-        autorityService.findById(Privillages.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorities::add);
+        authorityService.findById(Privillages.RESET_ANY_USER_PASSWORD.getId()).ifPresent(authorities::add);
+        authorityService.findById(Privillages.ACCESS_ADMIN_PANEL.getId()).ifPresent(authorities::add);
         account04.setAuthorities(authorities);
 
         accountService.save(account01);
