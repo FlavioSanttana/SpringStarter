@@ -33,13 +33,7 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                             <a class="nav-link" href="/login">login</a>
                         </li>
                     </span>
-                    
-                    <span sec:authorize="isAuthenticated()">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/profile">Profile</a>
-                        </li>
-                    </span>
-
+                                  
                     <span sec:authorize="hasRole('ROLE_ADMIN')">
                         <li class="nav-item">
                             <a class="nav-link" href="/admin">admin</a>
@@ -49,6 +43,18 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
                     <span sec:authorize="hasAnyRole('ROLE_ADMIN','ROLE_EDITOR')">
                         <li class="nav-item">
                             <a class="nav-link" href="/editor">editor</a>
+                        </li>
+                    </span>
+
+                    <span sec:authorize="isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/profile">Profile</a>
+                        </li>
+                    </span>
+
+                    <span sec:authorize="isAuthenticated()">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">Logout</a>
                         </li>
                     </span>
 
