@@ -33,6 +33,10 @@ public class SeedData implements CommandLineRunner {
     @Autowired (required=true)
     private AuthorityService authorityService;  
 
+    /*
+    Como isso funciona exatamente é que esse executor de linha de comando 
+    executará qualquer código que esteja dentro desse método.
+    */
     @Override
     public void run(String ... args) throws Exception{
 
