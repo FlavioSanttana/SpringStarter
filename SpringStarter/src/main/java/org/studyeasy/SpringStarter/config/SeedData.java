@@ -37,6 +37,10 @@ public class SeedData implements CommandLineRunner {
     Como isso funciona exatamente é que esse executor de linha de comando 
     executará qualquer código que esteja dentro desse método.
     */
+   /*
+   Esse método específico 'public void run(String ... args) throws Exception' 
+   pode receber qualquer número de argumentos 
+   */
     @Override
     public void run(String ... args) throws Exception{
 

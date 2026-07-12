@@ -30,6 +30,9 @@ public class Post {
 
     private LocalDateTime createdAt;
 
+    /*
+    Isso significa que uma nova coluna será adicionada ao banco de dados e essa coluna conterá uma chave estrangeira para outra tabela.
+    */
     @ManyToOne
     @JoinColumn(name="account_id", referencedColumnName = "id", nullable = false)
     private Account account;
