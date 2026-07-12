@@ -12,9 +12,29 @@ import org.studyeasy.SpringStarter.sevices.AccountService;
 @Controller
 public class AccountController {
     
+    /*
+    A anotação @Autowired serve para delegar ao Spring Framework a injeção automática 
+    de dependências na sua classe. Ela elimina a necessidade de instanciar objetos 
+    manualmente usando a palavra-chave new, permitindo que o contêiner de Inversão de 
+    Controle (IoC) do Spring gerencie o ciclo de vida e forneça as instâncias 
+    necessárias (beans) em tempo de execução. 
+
+    O Spring procura de forma automatizada por um componente compatível criado no 
+    ecossistema (geralmente classes anotadas com @Component, @Service, @Repository 
+    ou @Controller) e o insere no local indicado.
+    */
     @Autowired
     private AccountService accountService;
 
+    /*
+    A anotação @GetMapping serve para mapear requisições HTTP do tipo GET para métodos
+    específicos dentro de uma classe controladora (anotada com @RestController ou @Controller) 
+    no Spring Boot.
+
+    Ela é uma especialização composta da anotação @RequestMapping(method = RequestMethod.GET), 
+    servindo como um atalho mais curto, limpo e legível para expor endpoints de leitura que 
+    buscam ou listam dados
+    */
     @GetMapping("/register")
     public String register(Model model){
 
