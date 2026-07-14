@@ -28,6 +28,14 @@ public class WebSecurityConfig{
         
     };
 
+    /*
+    A annotation @Bean tem um objetivo muito claro: dizer ao Spring Framework que ele deve 
+    gerenciar a instância de um objeto retornado por um método. Em termos mais simples, quando 
+    você anota um método com @Bean, você está assumindo manualmente o controle da criação de 
+    um objeto e entregando esse objeto pronto para o container de Inversão de Controle (IoC) do Spring. 
+    A partir desse momento, esse objeto torna-se um "Bean" e pode ser injetado (@Autowired) em qualquer 
+    outra parte do seu código.
+    */
     @Bean
     public static PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
