@@ -29,6 +29,10 @@ public class AccountService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    /*
+    Sempre que um usuário se inscrever, marcaremos o usuário 
+    com uma função de usuário. 
+    */
     public Account save(Account account){
         
         account.setPassword(passwordEncoder.encode(account.getPassword()));
