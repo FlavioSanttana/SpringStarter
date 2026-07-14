@@ -56,21 +56,21 @@ public class SeedData implements CommandLineRunner {
         account01.setLastName("Santana");
         account01.setEmail("flavio@santana.br");
         account01.setPassword("123456");
-        account01.setRole(Roles.USER.getRole());
+        account01.setRole(Roles.USER.getRole()); // Definindo o papel da conta que está sendo criado. 
         
         Account account02 = new Account();
         account02.setFirstName("Admin");
         account02.setLastName("Teste");
         account02.setEmail("admin@teste.br");
         account02.setPassword("123456");
-        account02.setRole(Roles.ADMIN.getRole());
+        account02.setRole(Roles.ADMIN.getRole()); // Definindo o papel da conta que está sendo criado.
         
         Account account03 = new Account();
         account03.setFirstName("Editir01");
         account03.setLastName("Teste");
         account03.setEmail("editor01@teste.br");
         account03.setPassword("123456");
-        account03.setRole(Roles.EDITOR.getRole());
+        account03.setRole(Roles.EDITOR.getRole()); // Definindo o papel da conta que está sendo criado.
        
         Account account04 = new Account();
         account04.setFirstName("Editir02");

@@ -37,6 +37,9 @@ public class AccountService implements UserDetailsService {
         
         account.setPassword(passwordEncoder.encode(account.getPassword()));
         
+        /*
+        Se a conta não possuir um papel definido, atribuímos por default a conta o papel USER. 
+        */
         if(account.getRole()==null){
             account.setRole(Roles.USER.getRole());
         }
