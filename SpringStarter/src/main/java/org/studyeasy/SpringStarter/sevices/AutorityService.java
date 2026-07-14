@@ -5,6 +5,7 @@ import org.springframework.lang.NonNull;
 import org.studyeasy.SpringStarter.models.Authority;
 import org.studyeasy.SpringStarter.repositories.AuthorityRepository;
 
+@Service
 public class AutorityService {
     
     @Autowired
